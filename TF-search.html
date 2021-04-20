@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人类转录因子数据库DEMO SEARCH</title>
+
+    <link rel="stylesheet" href="jquery/jquery-3.6.0.min.js">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="bootstrap/js/bootstrap.js">
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="http://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+
+    <script src="jquery/BackEnd.js"></script>
+    <script src="jquery/DataTables.js"></script>
+
+</head>
+<body>
+<div class="container navigate">
+    <ul class="nav navbar-nav ">
+        <li class="dropdown "><a href="Home.html"><i class="fa fa-home "></i> Home </a></li>
+        <li class="dropdown"><a href="./TF-search.html"><i class="fa fa-wrench"></i> TF-Search </a></li>
+        <li><a href="Management.html"><i class="fa fa-cloud-download "></i>Management Data</a></li>
+        <li class="dropdown"><a href="unfinished.html"><i class="fa fa-safari "></i>Browse</a></li>
+        <li><a href="unfinished.html"><i class="fa fa-bar-chart"></i>Statistics</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="center-block alert alert-info" style="font-size: 14px; text-align: left ;margin-top: 20px">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        </button>
+        <h3 class="alert-heading"><b>Information</b></h3>
+        <hr>
+        <p class="mb-0">
+            <b>本数据库基于<a class="hover" href="https://www.encodeproject.org">ENCODE数据库(Encyclopedia of DNA Elements </a>）中转录因子CHIP-seq数据库。用户可以通过指定感兴趣的转录因子名称，搜索这一转录因子在人类的各种组织和细胞系中基因组上的靶点以及相应的注释信息；或通过指定感兴趣的基因，检索可以结合该基因的转录因子。
+                本数据库中共包含2762个实验结果，964个转录因子，153个组织以及细胞系。
+
+            </b>
+        </p>
+    </div>
+</div>
+
+<div class="container search-module1">
+    <div class="search_module" style="margin-bottom: 5px">
+
+        <div class="form-inline">
+            <div class="form-group col-md-offset-2">
+                <label for="userInput">转录因子名称(TF name)</label>
+                <input type="text" class="form-control" id="userInput" name="TF_name" placeholder="MAZ">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">物种名(Biosample organism)</label>
+                <select class="form-control" id="exampleInputEmail2" name="Biosample_term_name">
+                    <option>Human</option>
+                    <!-- <option>2</option> -->
+                </select>
+            </div>
+            <!--            <button type="submit" class="btn btn-default" id="btn_submit">Submit</button>-->
+            <button class="btn btn-default" id="btn_submit">Submit</button>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-12 search_module " style="width:100%;" hidden id="TF-table">
+        <table id="table" class="display" style="cursor:pointer ;table-layout: fixed;word-wrap:break-word;">
+            <thead>
+                <tr>
+                    <th>File acc</th>
+                    <th>Experiment acc</th>
+                    <th>Biosample term</th>
+                    <th>Biosample type</th>
+                    <th>Experiment target</th>
+                    <th>Experiment date released</th>
+                    <th>Project</th>
+                    <th>Download URL</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <div class=" panel panel-default" style="margin-top: 5px">
+            <div class="panel-heading">README：
+            </div>
+            <div class="panel-body">
+                <b>使用:</b>TF-search页面用于搜索并展示相应的结果。输入需要查询的转录因子名称（TF name），选择想要查询的 物种名(Biosample
+                organism),点击Submit，即可返回所需要的结果;<br>
+                如果不进行输入，默认返回数据库中前10条数据；如果输入的名称在数据库中不存在（例如‘a’），会有提示框。<br>
+                表格大小会根据返回数据量的多少进行变化。
+            </div>
+            <div class="panel-body">
+                <b>返回的结果:</b>返回的数据一共9列，包括
+                FIle acc: 文件ID、
+                File assembly：基因组版本、
+                Experiment acc：实验ID、
+                Biosample term：生物样本名称、
+                Biosample type：生物样本类型、
+                <!--                $Biosample_organism：物种、-->
+                Experiment target：转录因子名称、
+                Experiment data released：数据发布时间、
+                Project：项目、
+                Download URL：数据下载地址。<br>
+                可以通过点击downlowad进行下载。
+            </div>
+
+            <div class="panel-body">
+                <b>后端PHP：</b>
+                本页面连接后端服务器采用Ajax工具，能够在不完全刷新页面的情况下，返回数据，并填入表格中。<br>
+                在sql查询语句中使用PDO类，可以连接多种数据库，同时使用了“prepare”语句，可以提升应用的性能，让客户端/服务器缓存查询和元信息，还能阻止 SQL 注入攻击。
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container navigate">
+    <div class="col-md-12  ">
+        <p class="copyright text-center">Copyright ©2021 Team "TEAM". If you make use of any data or methods inspired by
+            TranscriptionDB.<br>
+            Beijing Institute of Genomics,CAS, Wu Gangao(吴港澳) ,Ni Haocheng(倪豪辰),Huang Tianhao(黄天昊), China.</p>
+    </div>
+</div>
+
+</body>
+</html>

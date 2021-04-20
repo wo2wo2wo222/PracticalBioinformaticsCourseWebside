@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人类转录因子数据库DEMO HOME</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="bootstrap/js/bootstrap.js">
+</head>
+<body>
+
+<div class="container navigate">
+    <ul class="nav navbar-nav ">
+        <li class="dropdown "><a href="./Home.html"><i class="fa fa-home "></i> Home </a></li>
+        <li class="dropdown"><a href="TF-search.html"><i class="fa fa-wrench"></i> TF-Search </a></li>
+        <li><a href="Management.html"><i class="fa fa-cloud-download "></i>Management Data</a></li>
+        <li class="dropdown"><a href="unfinished.html"><i class="fa fa-safari "></i>Browse</a></li>
+        <li><a href="unfinished.html"><i class="fa fa-bar-chart"></i>Statistics</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="center-block alert alert-info" style="font-size: 14px; text-align: left;margin-top: 20px">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        </button>
+        <h3 class="alert-heading"><b>Information</b></h3>
+
+        <hr>
+        <p class="mb-0">
+            <b>本数据库基于<a class="hover" href="https://www.encodeproject.org">ENCODE数据库(Encyclopedia of DNA Elements </a>）中转录因子CHIP-seq数据库。用户可以通过指定感兴趣的转录因子名称，搜索这一转录因子在人类的各种组织和细胞系中基因组上的靶点以及相应的注释信息；或通过指定感兴趣的基因，检索可以结合该基因的转录因子。
+                本数据库中共包含2762个实验结果，964个转录因子，153个组织以及细胞系。
+
+            </b>
+        </p>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2" hidden>
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="没做，先放着,用于查询all-fileds" name="search-allfileds">
+            <span class="input-group-btn">
+                <button class="btn btn-info disabled" id="search_id" type="button"><span
+                        class="glyphicon glyphicon-search"></span></button>
+              </span>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="center-block">
+        <h3 class="text-center"><b>数据分析流程DEMO</b></h3>
+        <br>
+        <img src="images/workflow_new.png" alt="" class="col-md-8 col-md-offset-2">
+
+    </div>
+    <div class="col-md-12">
+        <div class=" panel panel-default" style="margin-top: 5px">
+            <div class="panel-heading">README：</div>
+            <div class="panel-body">
+                <b>Home界面:</b>目前已经完成Home以及TF-search页面，点击上方的导航栏进行跳转；点击未完成的页面后，会在3秒后自动跳转回Home页面；
+                Information模块介绍本数据库的数据来源个基本信息
+            </div>
+
+            <div class="panel-body">
+                <b>workflow：</b>显示Deom进行数据分析流程示意图，图片来自网络。
+            </div>
+
+            <div class="panel-body">
+                <b>已完成部分：</b>建立项目网站；建立后台数据库，可以利用数据库的phpmyadmin工具进行数据库内容的动态更新；
+                可以通过html页面对数据库数据进行添加条目的操作；每个页面中都有对本数据库DEMO信息进行了介绍，在页面下方是对当前页面功能介绍。<br>
+                对于未完成的前端页面，会自动跳转回home页面。
+            </div>
+
+            <div class="panel-body">
+                <b>未完成部分：</b>第二次作业内容，包括在网站上提供利用 blast 查询序列数据；对查询出来的数据提供更新和删除功能；
+                找到一个你选择的某一类基因（蛋白质）的一个 RNA-seq 表达数据集，利用所学的技 能计算出表达值并存储到数据库里；
+                在查询出某个基因（蛋白质）后，利用其表达数据动态做出表达图（plot），还没有完成。
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container navigate">
+    <div class="col-md-12  ">
+        <p class="copyright text-center">Copyright ©2021 Team "TEAM". If you make use of any data or methods inspired by
+            TranscriptionDB.<br>
+            Beijing Institute of Genomics,CAS, Wu Gangao(吴港澳) ,Ni Haocheng(倪豪辰),Huang Tianhao(黄天昊), China.</p>
+    </div>
+</div>
+
+</body>
+</html>
