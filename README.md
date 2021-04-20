@@ -4,9 +4,9 @@ This is a simple webside project with using html, css, boostrap,  js,  jquery, a
 
 整个项目是课堂作业的第一部分，在这个版本中主要完成了课堂作业1的要求，建立了展示页面；功能页面；搜索页面，通过ajax连接到后端php再连接到数据库，进行查找数据的操作；通过管理页面，可以向数据库中插入数据；对于没有完成的页面有提示信息。
 
-## Homework Readme
-代码中默认运行的是本地数据库，数据内容在"LoadData.csv"中，创建表格的命令如下：
-(```)
+## Homework ReadMe
+代码中默认运行的是本地数据库，数据内容在"LoadData.csv"中，创建表格的命令如下：  
+```
 CREATE TABLE `homework1_test`.`experiment_meta_final` ( 
 `File_accession` VARCHAR(50) , 
 `File_assembly` VARCHAR(10) NOT NULL , 
@@ -19,7 +19,10 @@ CREATE TABLE `homework1_test`.`experiment_meta_final` (
 `Project` VARCHAR(10) NOT NULL , 
 `File_download_URL` TEXT NOT NULL , 
 PRIMARY KEY (`File_accession`)) ENGINE = InnoDB;
-(```)
+```
+在本地数据库中，修改database名称就可以建立对应的“experiment_meta_final”表格。
+
+
 
 
 ## **课堂作业总体设想：**
